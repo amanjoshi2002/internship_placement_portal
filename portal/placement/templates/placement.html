@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+
+{% block title %}Placement - College Placement & Internship Portal{% endblock %}
+
+{% block content %}
+<section class="jumbotron text-center">
+    <div class="container">
+        <h1 class="display-4">Welcome to the College Placement Portal</h1>
+        <p class="lead">Find exciting placement opportunities to kickstart your career.</p>
+        <!-- Add other hero section content here -->
+    </div>
+</section>
+
+<!-- Featured Opportunities -->
+<section class="container">
+    <h2 class="text-center mb-4">Featured Placement</h2>
+    <div class="row">
+        {% for placement in placements %}
+        <div class="col-md-4">
+            <div class="card mb-4 shadow-sm">
+                <img src="{{ placement.logo.url }}" class="card-img-top" alt="{{ placements.name }} Logo">
+                <div class="card-body">
+                    <h5 class="card-title">{{ internship.name }}</h5>
+                    <p class="card-text"><strong>Position:</strong> {{ placement.position }}</p>
+                    <p class="card-text"><strong>Slots:</strong> {{ placement.slots }}</p>
+                    <p class="card-text"><strong>Last Date to Apply:</strong> {{ placement.last_date_to_apply }}</p>
+                    <a href="{{ placement.link}}" class="btn btn-primary">Apply</a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</section>
+
+
+<section class="container mt-5">
+    <h2 class="text-center mb-4">Placed Students</h2>
+    <div class="row">
+        <!-- Card 1 -->
+        {% for place in placed_students %}
+
+        <div class="col-md-4 mb-4">
+            <div class="card">
+                <img src="{{ place.profile_photo.url }}" class="card-img-top img-fluid mx-auto d-block" alt="Student 2" style="max-width: 150px;">
+                <div class="card-body">
+                    <h5 class="card-title">{{ place.name }}</h5>
+                    <p class="card-text">Department: Computer Science</p>
+                    <p class="card-text">{{ place.year }}</p>
+                    <p class="card-text">{{ place.company }}</p>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</section>
+
+{% endblock %}

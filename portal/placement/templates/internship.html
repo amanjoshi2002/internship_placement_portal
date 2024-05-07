@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{% block title %}Internships - College Placement & Internship Portal{% endblock %}
+
+{% block content %}
+
+    <section class="jumbotron text-center">
+        <div class="container">
+            <h1 class="display-4">Welcome to the College Internship Portal</h1>
+            <p class="lead">Find exciting internship opportunities to kickstart your career.</p>
+            <!-- Add other hero section content here -->
+        </div>
+    </section>
+
+    <!-- Featured Opportunities -->
+    <section class="container">
+        <h2 class="text-center mb-4">Featured Internships</h2>
+        <div class="row">
+            {% for internship in internships %}
+            <div class="col-md-4">
+                <div class="card mb-4 shadow-sm">
+                    <img src="{{ internship.logo.url }}" class="card-img-top" alt="{{ internship.name }} Logo">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ internship.name }}</h5>
+                        <p class="card-text"><strong>Position:</strong> {{ internship.position }}</p>
+                        <p class="card-text"><strong>Slots:</strong> {{ internship.slots }}</p>
+                        <p class="card-text"><strong>Last Date to Apply:</strong> {{ internship.last_date_to_apply }}</p>
+                        <a href="{{ internship.link}}" class="btn btn-primary">Apply</a>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </section>
+
+
+{% endblock %}
